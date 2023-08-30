@@ -2,7 +2,7 @@
 
 int actual_prime(int n, int i);
 
-/i**
+/**
  * is_prime_number - says if an integer is a prime number or not
  * @n: number to evaluate
  *
