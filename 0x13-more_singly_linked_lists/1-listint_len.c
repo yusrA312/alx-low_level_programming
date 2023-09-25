@@ -7,14 +7,16 @@
  * Return: number of nodes
  */
 size_t listint_len(const listint_t *h)
-{int i = 0;
+{
+	int i = 0;
 	if (h == NULL)
 		printf("The list is empty");
 	else
 		for (i=0; h != NULL ;)
 		{
+			  i++;
 			h = h->next;
-			i++;
+		
 		}
 
 	return (i);
