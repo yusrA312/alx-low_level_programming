@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
 	{
 		close(ptr_from);
 		error("Can't write to file", 99);
-		{
+	}
 			re = read(ptr_from, buf, SIZE);
 			wr = write(ptr_to, buf, re);
 			if (wr != re)
@@ -79,7 +79,5 @@ int main(int argc, char *argv[])
 			if (close(ptr_from) == -1 || close(ptr_to) == -1)
 				error("Can't close ptr", 100);
 			return (0);
-		}
 
-	}
-}
+		}
