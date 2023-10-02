@@ -60,23 +60,24 @@ int main(int argc, char *argv[])
 		close(ptr_from);
 		error("Can't write to file", 99);
 	}
-			re = read(ptr_from, buf, SIZE);
-			wr = write(ptr_to, buf, re);
-			if (wr != re)
-			{
-				close(ptr_from);
-				close(ptr_to);
-				error("Can't write to file", 99);
-			}
+	while ((re = read(ptr_from, buf, SIZE)) > 0)
+	{
+		wr = write(ptr_to, buf, re);
+		if (wr != re || wr == -1)
+		{
+			close(ptr_from);
+			close(ptr_to);
+			ex("Can't write to file", 99);
+		}}
 
-			if (re == -1)
-			{
-				close(ptr_from);
-				close(ptr_to);
-				error("Can't read from file", 98);
-			}
-			if (close(ptr_from) == -1 || close(ptr_to) == -1)
-				error("Can't close ptr", 100);
-			return (0);
+	if (re == -1)
+	{
+		close(ptr_from);
+		close(ptr_to);
+		error("Can't read from file", 98);
+	}
+	if (close(ptr_from) == -1 || close(ptr_to) == -1)
+		error("Can't close ptr", 100);
+	return (0);
 
-		}
+}
