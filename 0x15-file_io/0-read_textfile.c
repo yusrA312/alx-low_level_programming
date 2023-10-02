@@ -1,6 +1,7 @@
-i#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "main.h"
 #define SIZE 1024
 /**
  * read_textfile - Read text file and print to STDOUT.
@@ -44,8 +45,8 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 		if (bytes_written != bytes_read)
 			break;
-
 		total_bytes += bytes_written;
+
 		letters -= bytes_written;
 	}
 	fclose(ptr);
