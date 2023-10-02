@@ -26,7 +26,6 @@ void error(const char *M, int ex)
 
 
 /**
- * copy_file - Copy the content from one file to another.
  * main - Copies the contents of a file to another file.
  * @argc: The number of command-line arguments.
  * @argv: An array of command-line argument strings.
