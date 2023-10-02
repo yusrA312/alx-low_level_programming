@@ -22,7 +22,8 @@ int create_file(const char *filename, char *text_content)
 
 {
 
-	int f, x;
+	int f;
+	int x;
 
 
 	if (filename == NULL)
