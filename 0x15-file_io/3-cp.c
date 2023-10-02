@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
-
 #define SIZE 1024
 
 /**
@@ -67,8 +66,9 @@ int main(int argc, char *argv[])
 		{
 			close(ptr_from);
 			close(ptr_to);
-			ex("Can't write to file", 99);
-		}}
+			error("Can't write to file", 99);
+		}
+	}
 
 	if (re == -1)
 	{
