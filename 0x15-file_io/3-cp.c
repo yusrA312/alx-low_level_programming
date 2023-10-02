@@ -23,7 +23,6 @@ void error(const char *M, int ex)
 	exit(ex);
 }
 
-
 /**
  * main - Copies the contents of a file to another file.
  * @argc: The number of command-line arguments.
@@ -69,7 +68,6 @@ int main(int argc, char *argv[])
 			error("Can't write to file", 99);
 		}
 	}
-
 	if (re == -1)
 	{
 		close(ptr_from);
