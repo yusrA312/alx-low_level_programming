@@ -19,7 +19,7 @@
 
 void error(const char *M, int ex)
 {
-	dprintf(STDERR_FILENO, "Error: %s\n", M);
+	dprintf(STDERR_FILENO, "%s\n", M);
 	exit(ex);
 }
 
