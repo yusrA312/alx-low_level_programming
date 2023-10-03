@@ -7,7 +7,6 @@
 /**
  * error - Display an error message and exit the program with an error code.
  *
- * @M: The error message to display.
  * @ex: The exit code to use when exiting the program.
  *
  * Error Codes:
@@ -17,10 +16,9 @@
  *  - 100: Failed to close a file descriptor.
  */
 
-void error(const char *M, int ex)
+void error(const char *M)
 {
-	dprintf(STDERR_FILENO, "%s\n", M);
-	exit(ex);
+	dprintf(STDERR_FILENO, "%s\n",M);
 }
 
 /**
@@ -46,17 +44,20 @@ int main(int argc, char *argv[])
 	char buf[SIZE];
 
 	if (argc != 3)
-		error("Usage: cp file_from file_to", 97);
+		error("Usage: cp file_from file_to")
+			exit(97);
 	file_from = argv[1];
 	file_to = argv[2];
 	ptr_from = open(file_from, O_RDONLY);
 	if (ptr_from == -1)
-		error("Can't read from file", 98);
+		error("Can't read from file  %s\n", argv[1]);
+	exit(98);
 	ptr_to = open(file_to, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (ptr_to == -1)
 	{
 		close(ptr_from);
-		error("Can't write to file", 99);
+		error("Can't write to %s\n", argv[2]);
+		exit(99);
 	}
 	while ((re = read(ptr_from, buf, SIZE)) > 0)
 	{
@@ -65,17 +66,21 @@ int main(int argc, char *argv[])
 		{
 			close(ptr_from);
 			close(ptr_to);
-			error("Can't write to file", 99);
+			error("Can't write to %s\n", argv[2]);
+			exit(99);
 		}
 	}
+
 	if (re == -1)
 	{
 		close(ptr_from);
 		close(ptr_to);
-		error("Can't read from file", 98);
+		error("Can't read from file %s\n", argv[1]);
+		exit(98);
 	}
 	if (close(ptr_from) == -1 || close(ptr_to) == -1)
-		error("Can't close ptr", 100);
+	{	error("Can't close ptr ");
+		exit(100);}
 	return (0);
 
 }
