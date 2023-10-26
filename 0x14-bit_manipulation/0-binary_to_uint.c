@@ -9,30 +9,21 @@
  *
  * Return: the converted number
  */
-
 unsigned int binary_to_uint(const char *b)
 {
-	int i, num, rem, x, base = 1, n;
-	int int_num = 0;
-
-	x = strlen(b);
-	num = atoi(b);
+	unsigned int int_num = 0;
 
 	if (!b)
 		return (0);
 
-	for (n = 0; b[n]; n++)
+	int i;
+	for (i = 0; b[i]; i++)
 	{
-
-		if (b[n] < '0' || b[n] > '1')
+		if (b[i] < '0' || b[i] > '1')
 			return (0);
-	}
 
-	for (i = x - 1; i >= 0; i--)
-	{rem = num % 10;
-		int_num = int_num + rem * base;
-		num = num / 10;
-		base = base * 2;
+		int_num = (int_num << 1) | (b[i] - '0');
 	}
-	return (int_num);
+	return int_num;
 }
+
