@@ -9,10 +9,10 @@
  */
 dlistint_t *add_nodeint_end(dlistint_t **head, const int n)
 {
-	listint_t *ptr;
-	listint_t *tem = *head;
+	dlistint_t *ptr;
+	dlistint_t *tem = *head;
 
-	ptr = malloc(sizeof(listint_t));
+	ptr = malloc(sizeof(dlistint_t));
 	if (!ptr)
 		return (NULL);
 
@@ -34,4 +34,4 @@ dlistint_t *add_nodeint_end(dlistint_t **head, const int n)
 
 
 	return (ptr);
-
+}
