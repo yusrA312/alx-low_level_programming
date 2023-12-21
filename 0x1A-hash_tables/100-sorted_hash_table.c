@@ -46,8 +46,7 @@ shash_table_t *shash_table_create(unsigned long int size)
 {
 	shash_table_t *table;
 
-	if (size == 0)
-		return (NULL);
+	if (size == 0)return (NULL);
 
 	table = calloc(1, sizeof(shash_table_t));
 	if (table == NULL)
