@@ -7,7 +7,8 @@
  *
  */
 void sorted_list(shash_table_t *ht, shash_node_t *new_node)
-{shash_node_t *sbucket = ht->shead;
+{
+	shash_node_t *sbucket = ht->shead;
 
 	if (sbucket == NULL)
 	{
@@ -46,7 +47,8 @@ shash_table_t *shash_table_create(unsigned long int size)
 {
 	shash_table_t *table;
 
-	if (size == 0)return (NULL);
+	if (size == 0)
+		return (NULL);
 
 	table = calloc(1, sizeof(shash_table_t));
 	if (table == NULL)
