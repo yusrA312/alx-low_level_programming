@@ -19,9 +19,9 @@ int linear_search_range(int *array, size_t start, size_t end, int value)
 	{
 		printf("Value checked array[%ld] = [%d]\n", i, array[i]);
 		if (array[i] == value)
-			return (int)i;
+			return ((int)i);
 	}
-	return -1;
+	return (-1);
 }
 
 /**
@@ -38,8 +38,9 @@ int jump_search(int *array, size_t size, int value)
 	size_t i, jump;
 	size_t step = sqrt(size);
 	int result;
+
 	if (array == NULL || size == 0)
-		return -1;
+		return (-1);
 
 
 	for (i = jump = 0; jump < size && array[jump] < value;)
@@ -55,10 +56,10 @@ int jump_search(int *array, size_t size, int value)
 
 	result = linear_search_range(array, i, jump, value);
 	if (result != -1)
-		return result;
-	else
+		return (result);
+
 	{
 		printf("Value checked array[%ld] = [%d]\n", jump, array[jump]);
-		return -1;
+		return (-1);
 	}
 }
