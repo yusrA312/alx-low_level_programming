@@ -1,6 +1,5 @@
 #include "search_algos.h"
-#include <stdio.h>
-#include <math.h>
+
 
 /**
  * linear_search_range - Searches for a value in a range using linear search
@@ -14,7 +13,9 @@
  */
 int linear_search_range(int *array, size_t start, size_t end, int value)
 {
-	for (size_t i = start; i <= end; i++)
+	size_t i;
+
+	for (i = start; i <= end; i++)
 	{
 		printf("Value checked array[%ld] = [%d]\n", i, array[i]);
 		if (array[i] == value)
@@ -34,11 +35,12 @@ int linear_search_range(int *array, size_t start, size_t end, int value)
  */
 int jump_search(int *array, size_t size, int value)
 {
+	size_t i, jump;
+	size_t step = sqrt(size);
+	int result;
 	if (array == NULL || size == 0)
 		return -1;
 
-	size_t step = sqrt(size);
-	size_t i, jump;
 
 	for (i = jump = 0; jump < size && array[jump] < value;)
 	{
@@ -51,7 +53,7 @@ int jump_search(int *array, size_t size, int value)
 
 	jump = jump < size - 1 ? jump : size - 1;
 
-	int result = linear_search_range(array, i, jump, value);
+	result = linear_search_range(array, i, jump, value);
 	if (result != -1)
 		return result;
 	else
