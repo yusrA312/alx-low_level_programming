@@ -14,7 +14,7 @@
  */
 int exponential_search(int *array, size_t size, int value)
 {
-	size_t start, end, mid, i;
+	size_t start, end, mid, i, j;
 
 	if (array == NULL)
 		return (-1);
@@ -33,7 +33,7 @@ int exponential_search(int *array, size_t size, int value)
 	while (end >= i / 2)
 	{
 		printf("Searching in array: ");
-		for (size_t j = i / 2; j < end; j++)
+		for (j = i / 2; j < end; j++)
 			printf("%d, ", array[j]);
 		printf("%d\n", array[end]);
 
