@@ -14,7 +14,7 @@
  */
 int exponential_search(int *array, size_t size, int value)
 {
-	size_t start, end, mid, i, j;
+	size_t start, end, i, j, mid;
 
 	if (array == NULL)
 		return (-1);
@@ -39,13 +39,16 @@ int exponential_search(int *array, size_t size, int value)
 
 		mid = i / 2 + (end - i / 2) / 2;
 		if (array[mid] == value)
+		{
+			printf("Found %d at index: %ld\n", value, mid);
 			return (mid);
+		}
 		if (array[mid] > value)
 			end = mid - 1;
 		else
 			start = mid + 1;
 	}
 
+	printf("Found %d at index: -1\n", value);
 	return (-1);
 }
-
